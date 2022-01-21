@@ -39,12 +39,12 @@ def main(params):
             t_start = time()
             # Read 100,000 records from the dataset 
             taxi_data = next(taxi_data_iter)
-            # If the table 'yellow_taxi_data' exists, replace the table with a new table
-            if count == 1:
-                taxi_data.head(0).to_sql(name=table_name, con=engine, if_exists='replace')
             # Change the datatype of the pickup and dropoff datetime columns from string to datetime 
             taxi_data.tpep_pickup_datetime = pd.to_datetime(taxi_data.tpep_pickup_datetime)
             taxi_data.tpep_dropoff_datetime = pd.to_datetime(taxi_data.tpep_dropoff_datetime)
+            # If the table 'yellow_taxi_data' exists, replace the table with a new table
+            if count == 1:
+                taxi_data.head(0).to_sql(name=table_name, con=engine, if_exists='replace')
             # Insert the data to the database
             taxi_data.to_sql(name=table_name, con=engine, if_exists='append')
             # Record the ending time 
