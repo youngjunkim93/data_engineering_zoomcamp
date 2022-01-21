@@ -33,7 +33,8 @@ SELECT z_do."Zone" AS dropoff_zone, COUNT(*) AS trip_count
 
 -- Question 6. Pickup-Dropoff pair with the largest price for a ride (based on total_amount)
 -- Here, I omitted the ride with unknown pickup or dropoff ID (possibly beyond NYC taxi boundary)
-SELECT z_pu."Zone" AS pickup_zone, z_do."Zone" AS dropoff_zone, AVG(total_amount) AS average_fare
+SELECT z_pu."Zone" AS pickup_zone, z_do."Zone" AS dropoff_zone, 
+		ROUND(AVG(total_amount)::numeric, 2) AS average_fare
     FROM yellow_taxi_data AS t
     INNER JOIN zone_data AS z_pu
         ON z_pu."LocationID" = t."PULocationID"
