@@ -1,6 +1,8 @@
 # Ingesting NYC Taxi data to PostgreSQL DB 
 
 ```bash
+docker-compose up -d
+
 URL="https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv"
 
 docker run -it \
