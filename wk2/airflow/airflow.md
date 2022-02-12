@@ -37,7 +37,9 @@ After starting Airflow, you can interact with it in 3 ways
 3. Using the REST API.
 
 ### Shutting down and cleaning up
-docker-compose down --volumes --rmi all
+``` bash
+$ docker-compose down --volumes --rmi all
+```
 
 ## DAG Files
 
